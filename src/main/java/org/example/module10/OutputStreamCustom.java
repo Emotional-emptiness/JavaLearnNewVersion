@@ -1,4 +1,4 @@
-package org.example;
+package org.example.module10;
 
 import java.io.IOException;
 import java.io.OutputStream;

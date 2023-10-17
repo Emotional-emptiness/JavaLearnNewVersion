@@ -1,4 +1,4 @@
-package org.example;
+package org.example.module10;
 
 public class ExampleFromCodewars {
     public static void main(String[] args) {
