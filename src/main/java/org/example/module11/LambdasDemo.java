@@ -1,8 +1,9 @@
 package org.example.module11;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-// решить задачу потом : дается строка символов, и  надо вывести в консоль раз повторяется символ n ( можно усложнить и написать код который возвращяет самый частый символ который встречается в строке )
 public class LambdasDemo {
     private static List<String> emails = Arrays.asList("oleksander.yanov@google.com"
             , "oleksander@gmail.com", "igor.petlura@mail.ru", "ivan.trytiak@gmail.com"
@@ -16,8 +17,10 @@ public class LambdasDemo {
 //        EmailFunction mailleLambda = email -> email.contains("mail.ru");
 //        checkEmail(emails, mailleLambda);
 
-        EmailFunction emailFunction = email -> email.contains("gmail.com") && email.length() > 20;
+        final Predicate<String> emailFunction = email -> email.contains("gmail.com") && email.length() > 20;
         checkEmail(emails, emailFunction);
+
+        EmailFunction.method();
 
         final String googleRegxp = "google.com";
         checkEmail(emails, email -> email.contains(googleRegxp));
@@ -25,11 +28,19 @@ public class LambdasDemo {
 
         Collections.sort(emails, (o1, o2) -> (o1.length() - o2.length()));
         System.out.println(emails);
+
+        Function<Integer, Double> function = value -> {
+            System.out.println("Inside func");
+            return value * 0.2;
+        };
+        System.out.println("Before call apply");
+        Double apply = function.apply(453);
+        System.out.println(apply);
     }
-    private static List<String> checkEmail(List<String> emails , EmailFunction function) {
+    private static List<String> checkEmail(List<String> emails , Predicate<String> function) {
         List<String> result = new ArrayList<>();
         for (String email : emails) {
-            if (email.contains("gmail.com")) {
+            if (function.test(email)) {
                 result.add(email);
             }
         }
