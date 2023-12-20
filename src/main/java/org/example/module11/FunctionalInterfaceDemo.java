@@ -1,9 +1,7 @@
 package org.example.module11;
 
 import java.util.*;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 public class FunctionalInterfaceDemo {
     private static List<String> emails = Arrays.asList("oleksander.yanov@google.com"
@@ -25,7 +23,21 @@ public class FunctionalInterfaceDemo {
 
         // supplier example
         Supplier<Integer> randomDigit = () -> new Random().nextInt(100) * 50;
-        System.out.println(randomDigit.get());
+        Integer randomNumber = randomDigit.get();
+        System.out.println("supplier example 1 : " + randomNumber);
+        System.out.println("supplier example 2 : " + randomDigit.get());
+
+        // binaryOperator example
+        BinaryOperator<Integer> multiply = (x, y) -> x*y;
+        Integer apply = multiply.apply(34, 34);
+        System.out.println("binaryOperator example 1 : " + apply);
+        System.out.println("binaryOperator example 2 : " + multiply.apply(3,3));
+
+        // unaryOperator example
+        UnaryOperator<Integer> sum = x -> x + x;
+        Integer sumX = sum.apply(12);
+        System.out.println("unaryOperator example 1 : "+ sumX);
+        System.out.println("unaryOperator example 2 :" + sum.apply(2));
     }
     private static Map<String,Integer> calculateEmailLetters(List<String> emails, Function<String,Integer> function) {
         Map<String, Integer> result = new HashMap<>();
