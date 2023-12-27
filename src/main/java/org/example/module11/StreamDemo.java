@@ -42,10 +42,12 @@ public class StreamDemo {
             employeeNames.add(employee.getName());
         }
 
+        // stream
         List<String> employeeWithStream = employees.stream()
                 .filter(employee -> employee.getStatus().equals(UserStatus.ACTIVE))
                 .sorted(Comparator.comparingInt(Employee::getId))
                 .map(Employee::getName)
+                // terminal operation
                 .toList();
         System.out.println(employeeNames);
         System.out.println(employeeWithStream);
