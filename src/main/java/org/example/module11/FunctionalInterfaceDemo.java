@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.function.*;
 
 public class FunctionalInterfaceDemo {
-    private static List<String> emails = Arrays.asList("oleksander.yanov@google.com"
+    final private static List<String> emails = Arrays.asList("oleksander.yanov@google.com"
             , "oleksander@gmail.com", "igor.petlura@mail.ru", "ivan.trytiak@gmail.com"
             , "anton@gmail.com", "serhii@google.com");
 
