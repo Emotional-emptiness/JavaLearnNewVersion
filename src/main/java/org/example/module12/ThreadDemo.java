@@ -12,6 +12,5 @@ public class ThreadDemo  {
         Thread thread1 = new ChildThread();
         System.out.println("Thread.currentThread().getPriority() = " + Thread.currentThread().getPriority());
         thread1.start();
-
     }
 }
