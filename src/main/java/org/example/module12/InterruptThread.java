@@ -8,10 +8,23 @@ public class InterruptThread extends Thread {
         int counter = 0;
         while (!thread.isInterrupted()) {
             System.out.println("Loop " + counter);
-            if ( counter > 99 ) {
-                thread.interrupt();
-            }
+//            if ( counter > 99 ) {
+//                thread.interrupt();
+//                System.out.println("Thread has been interrupted... ");
+//                System.out.println("Main thread finish ");
+//            }
             counter++;
+            ThreadSleep(thread);
+        }
+    }
+    private void ThreadSleep(Thread thread) {
+        try {
+            thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            System.out.println("Interrupted : " + Thread.currentThread().getName());
+            System.out.println("IsInterrupted flag : " + Thread.currentThread().isInterrupted());
+            Thread.currentThread().interrupt();
         }
     }
 }
